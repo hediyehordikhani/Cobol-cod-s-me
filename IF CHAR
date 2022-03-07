@@ -1,0 +1,18 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. IFCHAR.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-CHAR1  PIC X(5).
+       01 WS-CHAR2  PIC X(5).
+       01 WS-CHAR3  PIC X(5).
+       PROCEDURE DIVISION.
+            MOVE 'HELLO' TO WS-CHAR1 WS-CHAR3.
+            MOVE 'GOODBY' TO WS-CHAR2.
+            IF WS-CHAR1 = WS-CHAR2 THEN
+               DISPLAY 'HELLO GOODBY'
+            ELSE
+               DISPLAY 'GOODBY'.
+            IF WS-CHAR1 = WS-CHAR3 THEN
+               DISPLAY 'HELLO!'.
+            STOP RUN.
