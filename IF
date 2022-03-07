@@ -1,0 +1,20 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. IFCOND.                                              
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 ANSWER_1 PIC X(15).                                           
+       PROCEDURE DIVISION.                                              
+       PROGRAM-BRGIN.                                                   
+            PERFORM QUESTION.                                           
+            PERFORM ANSWER.                                             
+            STOP RUN.                                                   
+       QUESTION.                                                        
+            DISPLAY "HOW ARE YOU?".                                     
+       ANSWER.                                                          
+            ACCEPT ANSWER_1.                                            
+            IF ANSWER_1 = "GOOD"                                        
+            DISPLAY "IM VERY GOOD".                                     
+            IF ANSWER_1 = "NOT BAD"                                     
+            DISPLAY "IM NOT BAD".                                       
+       PROGRAM-DONE.                                                    
