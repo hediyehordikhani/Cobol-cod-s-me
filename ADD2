@@ -1,0 +1,28 @@
+
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. ADD2.                                                
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 CO-ID       PIC 9.                                            
+       01 NAME     PIC X(7).                                            
+       01 LASTNAME PIC X(15).                                           
+       PROCEDURE DIVISION.                                              
+       PROGRAM-BEGIN.                                                   
+            MOVE "87055" TO CO-ID.                                      
+            MOVE "ZEINAB" TO NAME.                                      
+            MOVE "ORDIKHANI" TO LASTNAME.                               
+            DISPLAY CO-ID.                                              
+            DISPLAY NAME.                                               
+            DISPLAY LASTNAME.                                           
+       PROGRAM-DONE.                                                    
+            STOP RUN.    
+            
+            *******************************
+            JCL CODE FOR SUBMIT
+            *******************************
+//ADD       JOB  'ORDIKHANI',NOTIFY=DBKIZO1                             
+//RUN       EXEC IGYWCLG,GOPGM=ADD2                                     
+//SYSPRINT  DD SYSOUT=*                                                 
+//COBOL.SYSIN     DD DISP=SHR,DSN=DBKIZO1.COB.PROGRAM(ADD2)             
+/*   
