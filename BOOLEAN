@@ -1,0 +1,23 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. BOLEAN.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+        01 WS-NUM PIC 9(3).
+         88 PASS VALUE ARE 041 THRU 100.
+         88 FAIL VALUE ARE 000 THRU 040.
+       PROCEDURE DIVISION.
+            MOVE 66 TO WS-NUM.
+            IF PASS
+              DISPLAY "PASS WITH" WS-NUM.
+            IF FAIL
+              DISPLAY "FAIL WITH" WS-NUM.
+            STOP RUN.
+            *******************************
+            JCL CODE FOR SUBMIT
+            *******************************
+//BOLEAN    JOB  'ORDIKHANI',NOTIFY=DBKIZO1                             
+//RUN       EXEC IGYWCLG,GOPGM=BOLEAN                                   
+//SYSPRINT  DD SYSOUT=*                                                 
+//COBOL.SYSIN     DD DISP=SHR,DSN=DBKIZO1.COB.PROGRAM(BOLEAN)           
+/*                                                                      
