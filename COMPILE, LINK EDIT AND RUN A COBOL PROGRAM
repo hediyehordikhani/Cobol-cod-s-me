@@ -1,0 +1,48 @@
+//IGYWCLG PROC LNGPRFX='IGY',SYSLBLK=3200,                              
+//*IGYWCLG PROC LNGPRFX='IGY.V4R2M0',SYSLBLK=3200,                      
+//             LIBPRFX='CEE',GOPGM=GO                                   
+//*                                                                     
+//********************************************************************* 
+//*                                                                     
+//*  COMPILE, LINK EDIT AND RUN A COBOL PROGRAM                         
+//*                                                                     
+//*  PARAMETER  DEFAULT VALUE    USAGE                                  
+//*   LNGPRFX   IGY.V4R2M0       PREFIX FOR LANGUAGE DATA SET NAMES     
+//*   SYSLBLK   3200             BLKSIZE FOR OBJECT DATA SET            
+//*   LIBPRFX   CEE              PREFIX FOR LIBRARY DATA SET NAMES      
+//*   GOPGM     GO               MEMBER NAME FOR LOAD MODULE            
+//*                                                                     
+//*  CALLER MUST SUPPLY //COBOL.SYSIN DD ...                            
+//*                                                                     
+//*  CALLER MUST ALSO SUPPLY //COBOL.SYSLIB DD ... for COPY statements  
+//*                                                                     
+//COBOL  EXEC PGM=IGYCRCTL,REGION=0M                                    
+//STEPLIB  DD  DSNAME=&LNGPRFX..SIGYCOMP,                               
+//             DISP=SHR                                                 
+//SYSPRINT DD  SYSOUT=*                                                 
+//SYSLIN   DD  DSNAME=&&LOADSET,UNIT=SYSALLDA,                          
+//             DISP=(MOD,PASS),SPACE=(TRK,(3,3)),                       
+//             DCB=(BLKSIZE=&SYSLBLK)                                   
+//SYSUT1   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT2   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT3   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT4   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT5   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT6   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//SYSUT7   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                          
+//LKED   EXEC PGM=IEWBLINK,COND=(8,LT,COBOL),REGION=0M                  
+//SYSLIB   DD  DSNAME=&LIBPRFX..SCEELKED,                               
+//             DISP=SHR                                                 
+//SYSPRINT DD  SYSOUT=*                                                 
+//SYSLIN   DD  DSNAME=&&LOADSET,DISP=(OLD,DELETE)                       
+//         DD  DDNAME=SYSIN                                             
+//SYSLMOD  DD  DSNAME=&&GOSET(&GOPGM),SPACE=(TRK,(10,10,1)),            
+//             UNIT=SYSALLDA,DISP=(MOD,PASS)                            
+//SYSUT1   DD  UNIT=SYSALLDA,SPACE=(TRK,(10,10))                        
+//GO     EXEC PGM=*.LKED.SYSLMOD,COND=((8,LT,COBOL),(4,LT,LKED)),       
+//             REGION=0M                                                
+//STEPLIB  DD  DSNAME=&LIBPRFX..SCEERUN,                                
+//             DISP=SHR                                                 
+//SYSPRINT DD  SYSOUT=*                                                 
+//CEEDUMP  DD  SYSOUT=*                                                 
+//SYSUDUMP DD  SYSOUT=*                                                 
