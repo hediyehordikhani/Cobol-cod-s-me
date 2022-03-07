@@ -1,0 +1,12 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. LOOP.                                                
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 SECOND  PIC 99.                                               
+       PROCEDURE DIVISION.                                              
+            MOVE 10 TO SECOND.                                          
+            PERFORM COUNT 10 TIMES.                                     
+            DISPLAY "10 TIMES".                                         
+            STOP RUN.                                                   
+       COUNT.                                                           
