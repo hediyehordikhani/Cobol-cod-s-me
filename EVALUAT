@@ -1,0 +1,15 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EVALUAT.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+        01 WS-NUM PIC 9 VALUE 0.
+       PROCEDURE DIVISION.
+            MOVE 3 TO WS-NUM.
+            EVALUATE TRUE
+             WHEN WS-NUM > 2
+              DISPLAY " WS-NUM IS GREATER THAN 2"
+             WHEN WS-NUM < 0
+              DISPLAY " WS-NUM IS LESS THAN 0"
+            END-EVALUATE.
+            STOP RUN.
