@@ -1,0 +1,13 @@
+        IDENTIFICATION DIVISION.                                        
+        PROGRAM-ID. DIS2VAR.                                            
+        ENVIRONMENT DIVISION.                                           
+        DATA DIVISION.                                                  
+        WORKING-STORAGE SECTION.                                        
+        01 WS-NAME  PIC X(6).                                           
+        01 WS-DATE  PIC X(10).                                          
+        PROCEDURE DIVISION.                                             
+             ACCEPT WS-NAME.                                            
+             ACCEPT WS-DATE.                                            
+             DISPLAY "WS-NAME:" WS-NAME.                                
+             DISPLAY "WS-DATE:" WS-DATE.                                
+             STOP RUN.                                                  
