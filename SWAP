@@ -1,0 +1,19 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. SWAP.                                                
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 CHAR_1  PIC X(5).                                             
+       01 CHAR_2  PIC X(10).                                            
+       01 CHAR_3  PIC X(15).                                            
+       PROCEDURE DIVISION.                                              
+       PROGRAM-BEGIN.                                                   
+            MOVE "A" TO CHAR_1.                                         
+            MOVE "B" TO CHAR_2.                                         
+            DISPLAY CHAR_1 CHAR_2.                                      
+            MOVE CHAR_1 TO CHAR_3.                                      
+            MOVE CHAR_2 TO CHAR_1.                                      
+            MOVE CHAR_3 TO CHAR_2.                                      
+            DISPLAY CHAR_1 CHAR_2.                                      
+       PROGRAM-DONE.                                                    
+            STOP RUN.                                                   
