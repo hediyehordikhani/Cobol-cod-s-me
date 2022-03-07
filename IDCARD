@@ -1,0 +1,25 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. IDCARD.                                              
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+        01 WS-NAME PIC X(6).                                            
+        01 WS-LASTNAME  PIC X(15).                                      
+        01 WS-ID PIC 9(5).                                              
+        01 WS-ADDRESS  PIC X(15).                                       
+        01 WS-COUNTRY  PIC X(10).                                       
+        01 WS-PINCODE PIC 9(6) VALUE 123456.                            
+       PROCEDURE DIVISION.                                              
+            MOVE "COBOL" TO WS-NAME.                                    
+            DISPLAY  "NAME:" WS-NAME.                                   
+            MOVE "PROGRAMMING" TO WS-LASTNAME.                          
+            DISPLAY  "LASTNAME:" WS-LASTNAME.                           
+            MOVE 20211 TO WS-ID.                                        
+            DISPLAY  "ID:" WS-ID.                                       
+            MOVE WS-NAME TO WS-ADDRESS.                                 
+            MOVE "TEHRAN" TO WS-ADDRESS.                                
+            DISPLAY  "ADDRESS:" WS-ADDRESS.                             
+            MOVE "INDIA" TO WS-COUNTRY.                                 
+            DISPLAY  "COUNTRY:" WS-COUNTRY.                             
+            DISPLAY  "PINCODE:" WS-PINCODE.                             
+            STOP RUN.                                                   
