@@ -1,0 +1,31 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. ADD3.                                                
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 INT1  PIC 9.                                                  
+       01 INT2  PIC 9.                                                  
+       01 CHAR1  PIC X(20).                                             
+       01 CHAR2  PIC X(20).                                             
+       PROCEDURE DIVISION.                                              
+       PROGRAM-BEGIN.                                                   
+            MOVE 3 TO INT1.                                             
+            MOVE "ORDIKHANI" TO CHAR1.                                  
+            DISPLAY "NUMBER" INT1 ":" CHAR1.                            
+            MOVE 3 TO INT1.                                             
+            MOVE "ORDIKHANI" TO CHAR1.                                  
+            DISPLAY "NUMBER" INT1 ":" CHAR1.                            
+            ADD 6 TO INT2.                                              
+            MOVE "COBOL" TO CHAR2.                                      
+            DISPLAY "NUMBER" INT2 ":" CHAR2.                            
+       PROGRAM-DONE.                                                    
+            STOP RUN.
+            *******************************
+            JCL CODE FOR SUBMIT
+            *******************************
+            
+ //ADD3      JOB  'ORDIKHANI',NOTIFY=DBKIZO1                             
+//RUN       EXEC IGYWCLG,GOPGM=ADD3                                     
+//SYSPRINT  DD SYSOUT=*                                                 
+//COBOL.SYSIN     DD DISP=SHR,DSN=DBKIZO1.COB.PROGRAM(ADD3)             
+/*                                                                      
