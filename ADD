@@ -1,0 +1,27 @@
+
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. ADD1.                                                
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 INT   PIC 9.                                                  
+       01 CHAR  PIC X(20).                                              
+       PROCEDURE DIVISION.                                              
+       PROGRAM-BEGIN.                                                   
+            MOVE 3 TO INT.                                              
+            MOVE "ORDIKHANI" TO CHAR.                                   
+            DISPLAY "NUMBER" INT ":" CHAR.                              
+            ADD 3 TO INT.                                               
+            MOVE "COBOL" TO CHAR.                                       
+            DISPLAY "NUMBER" INT ":" CHAR.                              
+       PROGRAM-DONE.                                                    
+            STOP RUN.  
+            
+            **************************
+            JCL CODE FOR SUBMIT
+            **************************
+//ADD       JOB  'ORDIKHANI',NOTIFY=DBKIZO1                             
+//RUN       EXEC IGYWCLG,GOPGM=ADD1                                     
+//SYSPRINT  DD SYSOUT=*                                                 
+//COBOL.SYSIN     DD DISP=SHR,DSN=DBKIZO1.COB.PROGRAM(ADD)              
+/*                                                                      
